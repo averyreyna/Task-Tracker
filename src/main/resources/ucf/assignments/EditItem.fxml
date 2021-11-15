@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" prefHeight="500.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ButtonController">
+    <padding>
+        <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+    </padding>
+    <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onBackToItemClick" text="Back to Item" textAlignment="CENTER" />
+    <Label alignment="TOP_CENTER" text="Edit an Item" textAlignment="CENTER">
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+    <GridPane>
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100" minWidth="50.0" prefWidth="250.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="50.0" prefWidth="250.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="50.0" prefWidth="250.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="50.0" prefWidth="250.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="50.0" prefWidth="250.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="50.0" prefWidth="250.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="50.0" prefWidth="250.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="50.0" prefWidth="250.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="30" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <children>
+            <TextField maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="Item Title" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+            <TextField maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="Item Due Date" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="Item Description" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+        </children>
+    </GridPane>
+
+    <Label fx:id="buttonResponses" />
+    <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onSubmitItemClick" text="Submit" textAlignment="CENTER" />
+</VBox>

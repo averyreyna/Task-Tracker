@@ -3,7 +3,7 @@
  *  Copyright 2021 Avery Reyna
  */
 
-package ucf.assignments.reynacop3330assignment4part2;
+package ucf.assignments;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;

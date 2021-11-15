@@ -3,7 +3,7 @@
  *  Copyright 2021 Avery Reyna
  */
 
-package ucf.assignments.reynacop3330assignment4part2;
+package ucf.assignments;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -74,7 +74,7 @@ public class ApplicationController extends javafx.application.Application
     @Override
     public void start(Stage stage) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(ApplicationController.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ApplicationController.class.getResource("CompletedItems.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);

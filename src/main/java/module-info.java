@@ -10,6 +10,6 @@ module ucf.assignments.reynacop3330assignment4part2 {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    opens ucf.assignments.reynacop3330assignment4part2 to javafx.fxml;
-    exports ucf.assignments.reynacop3330assignment4part2;
+    opens ucf.assignments to javafx.fxml;
+    exports ucf.assignments;
 }
