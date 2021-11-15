@@ -8,21 +8,24 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Application {
-    public static void main(String[] args) throws IOException {
+public class Application
+{
+    public static void main(String[] args) throws IOException
+    {
         HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap = new HashMap<>();
 
         Scanner openAppResponseInput = new Scanner(System.in);
         System.out.println("Would you like to run the To Do List App (y/n)?");
         String openAppResponse = openAppResponseInput.next();
 
-        while (openAppResponse.equals("y")) {
-
+        while (openAppResponse.equals("y"))
+        {
             Scanner makeListResponseInput = new Scanner(System.in);
             System.out.println("Would you like to make a new list (y/n)?");
             String makeListResponse = makeListResponseInput.next();
 
-            while (makeListResponse.equals("y")) {
+            while (makeListResponse.equals("y"))
+            {
                 makeListResponse = makeListFunction(outerMap, makeListResponseInput);
             }
 
@@ -30,7 +33,8 @@ public class Application {
             System.out.println("Would you like to make a new item (y/n)?");
             String makeItemResponse = makeItemResponseInput.next();
 
-            while (makeItemResponse.equals("y")) {
+            while (makeItemResponse.equals("y"))
+            {
                 makeItemResponse = makeItemFunction(outerMap, makeItemResponseInput);
             }
 
@@ -38,7 +42,8 @@ public class Application {
             System.out.println("Would you like to edit a list (y/n)?");
             String editListResponse = editListResponseInput.next();
 
-            while (editListResponse.equals("y")) {
+            while (editListResponse.equals("y"))
+            {
                 editListResponse = editListFunction(outerMap, editListResponseInput);
             }
 
@@ -46,10 +51,12 @@ public class Application {
             System.out.println("Would you like to edit an item (y/n)?");
             String editItemResponse = editItemResponseInput.next();
 
-            while (editItemResponse.equals("y")) {
+            while (editItemResponse.equals("y"))
+            {
                 Scanner listToEditItemOfInput = new Scanner(System.in);
                 System.out.println("From which of the following lists would you like to edit an item? Please input the exact name of the list.");
-                for (int i = 0; i < outerMap.size(); i++) {
+                for (int i = 0; i < outerMap.size(); i++)
+                {
                     System.out.println(outerMap.keySet().toArray()[i]);
                 }
 
@@ -62,14 +69,17 @@ public class Application {
             System.out.println("Would you like to remove a list (y/n)?");
             String removeListResponse = removeListResponseInput.next();
 
-            while (removeListResponse.equals("y")) {
+            while (removeListResponse.equals("y"))
+            {
                 Scanner typeOfListRemovalResponseInput = new Scanner(System.in);
                 System.out.println("Would you like to delete one list or all lists? 1 if one list; 0 if all lists.");
                 String typeOfListRemovalResponse = typeOfListRemovalResponseInput.next();
 
-                if (typeOfListRemovalResponse.equals("1")) {
+                if (typeOfListRemovalResponse.equals("1"))
+                {
                     removeListResponse = removeListFunction(outerMap, typeOfListRemovalResponseInput);
-                } else if (typeOfListRemovalResponse.equals("0")) {
+                } else if (typeOfListRemovalResponse.equals("0"))
+                {
                     removeListResponse = removeAllListsFunction(outerMap);
                 }
             }
@@ -78,25 +88,30 @@ public class Application {
             System.out.println("Would you like to remove an item from a list (y/n)?");
             String removeItemResponse = removeItemResponseInput.next();
 
-            while (removeItemResponse.equals("y")) {
+            while (removeItemResponse.equals("y"))
+            {
                 Scanner typeOfItemRemovalResponseInput = new Scanner(System.in);
                 System.out.println("Would you like to delete one list or all lists? 1 if one list; 0 if all lists.");
                 String typeOfListRemovalResponse = typeOfItemRemovalResponseInput.next();
 
-                if (typeOfListRemovalResponse.equals("1")) {
+                if (typeOfListRemovalResponse.equals("1"))
+                {
                     Scanner listToRemoveItemFromInput = new Scanner(System.in);
                     System.out.println("From which of the following lists would you like to remove an item? Please input the exact name of the list.");
-                    for (int i = 0; i < outerMap.size(); i++) {
+                    for (int i = 0; i < outerMap.size(); i++)
+                    {
                         System.out.println(outerMap.keySet().toArray()[i]);
                     }
 
                     String listToRemoveItemFrom = listToRemoveItemFromInput.next();
-
                     removeItemResponse = removeItemFunction(outerMap, typeOfItemRemovalResponseInput, listToRemoveItemFrom);
-                } else if (typeOfListRemovalResponse.equals("0")) {
+                }
+                else if (typeOfListRemovalResponse.equals("0"))
+                {
                     Scanner listToRemoveItemsFromInput = new Scanner(System.in);
                     System.out.println("From which of the following lists would you like to remove items? Please input the exact name of the list.");
-                    for (int i = 0; i < outerMap.size(); i++) {
+                    for (int i = 0; i < outerMap.size(); i++)
+                    {
                         System.out.println(outerMap.keySet().toArray()[i]);
                     }
 
@@ -110,7 +125,8 @@ public class Application {
             System.out.println("Would you like to display any of the lists and or items (y/n)?");
             String displayResponse = displayResponseInput.next();
 
-            while (displayResponse.equals("y")) {
+            while (displayResponse.equals("y"))
+            {
                 Scanner specificDisplayResponseInput = new Scanner(System.in);
                 System.out.println("""
                         Would you like to display (1, 2, 3, 4, or 5)?
@@ -123,7 +139,8 @@ public class Application {
 
                 String specificDisplayResponse = specificDisplayResponseInput.next();
 
-                switch (specificDisplayResponse) {
+                switch (specificDisplayResponse)
+                {
                     case "1":
                         printAllListsAndItems(outerMap);
                         break;
@@ -133,7 +150,8 @@ public class Application {
                     case "3":
                         Scanner listToPrintItemsFromInput = new Scanner(System.in);
                         System.out.println("Which of the following lists would you like to display items from? Please input the exact name of the list.");
-                        for (int i = 0; i < outerMap.size(); i++) {
+                        for (int i = 0; i < outerMap.size(); i++)
+                        {
                             System.out.println(outerMap.keySet().toArray()[i]);
                         }
 
@@ -144,7 +162,8 @@ public class Application {
                     case "4":
                         listToPrintItemsFromInput = new Scanner(System.in);
                         System.out.println("Which of the following lists would you like to display items from? Please input the exact name of the list.");
-                        for (int i = 0; i < outerMap.size(); i++) {
+                        for (int i = 0; i < outerMap.size(); i++)
+                        {
                             System.out.println(outerMap.keySet().toArray()[i]);
                         }
 
@@ -155,7 +174,8 @@ public class Application {
                     case "5":
                         listToPrintItemsFromInput = new Scanner(System.in);
                         System.out.println("Which of the following lists would you like to display items from? Please input the exact name of the list.");
-                        for (int i = 0; i < outerMap.size(); i++) {
+                        for (int i = 0; i < outerMap.size(); i++)
+                        {
                             System.out.println(outerMap.keySet().toArray()[i]);
                         }
 
@@ -173,10 +193,12 @@ public class Application {
             System.out.println("Would you like to save a list to an external file (y/n)?");
             String saveListResponse = saveListResponseInput.next();
 
-            while (saveListResponse.equals("y")) {
+            while (saveListResponse.equals("y"))
+            {
                 Scanner listToSaveInput = new Scanner(System.in);
                 System.out.println("Which of the following lists would you like to save? Please input the exact name of the list.");
-                for (int i = 0; i < outerMap.size(); i++) {
+                for (int i = 0; i < outerMap.size(); i++)
+                {
                     System.out.println(outerMap.keySet().toArray()[i]);
                 }
 
@@ -189,15 +211,18 @@ public class Application {
             System.out.println("Would you like to load a list from an external file (y/n)?");
             String loadListResponse = loadListResponseInput.next();
 
-            while (loadListResponse.equals("y")) {
+            while (loadListResponse.equals("y"))
+            {
                 File loadListFile = new File("src/main/java/ucf/assignments/saveListFile.txt");
                 BufferedReader loadListFileReader = new BufferedReader(new FileReader(loadListFile));
 
                 Scanner listToLoadInput = new Scanner(System.in);
                 System.out.println("Which of the following lists would you like to load? Please input the exact name of the list.");
-                for (int i = 0; i < loadListFile.length(); i++) { //would need to be changed to the list read from the external file
+                for (int i = 0; i < loadListFile.length(); i++)
+                {
                     String currentLine = loadListFileReader.readLine();
-                    if (currentLine.contains("L")) {
+                    if (currentLine.contains("L"))
+                    {
                         String currentListTitle = currentLine.replace("List: ", "");
                         System.out.println(currentListTitle);
                     }
@@ -211,11 +236,10 @@ public class Application {
             System.out.println("Would you like to continue running the To Do List App (y/n)?");
             openAppResponse = openAppResponseInput.next();
         }
-
     }
 
-    public static String makeListFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner makeListResponseInput) {
-
+    public static String makeListFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner makeListResponseInput)
+    {
         Scanner listNameInput = new Scanner(System.in);
         System.out.println("What do you want to name your new list?");
         String listName = listNameInput.next();
@@ -228,10 +252,12 @@ public class Application {
         return makeListResponseInput.next();
     }
 
-    public static String makeItemFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner makeItemResponseInput) {
+    public static String makeItemFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner makeItemResponseInput)
+    {
         Scanner listForNewItemInput = new Scanner(System.in);
         System.out.println("For which of the following lists would you like to add this item into? Please input the exact name of the list.");
-        for (int i = 0; i < outerMap.size(); i++) {
+        for (int i = 0; i < outerMap.size(); i++)
+        {
             System.out.println(outerMap.keySet().toArray()[i]);
         }
 
@@ -247,7 +273,8 @@ public class Application {
 
         int descLength = itemDesc.length();
 
-        while (descLength > 256) {
+        while (descLength > 256)
+        {
             System.out.println("Your description goes over the 256 character limit. Please input a shorter description.");
             itemDesc = itemDescInput.nextLine();
             descLength = itemDesc.length();
@@ -277,10 +304,12 @@ public class Application {
         return makeItemResponseInput.next();
     }
 
-    public static String editListFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner editListResponseInput) {
+    public static String editListFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner editListResponseInput)
+    {
         Scanner listToEditInput = new Scanner(System.in);
         System.out.println("For which of the following lists would you like to rename? Please input the exact name of the list.");
-        for (int i = 0; i < outerMap.size(); i++) {
+        for (int i = 0; i < outerMap.size(); i++)
+        {
             System.out.println(outerMap.keySet().toArray()[i]);
         }
 
@@ -297,10 +326,12 @@ public class Application {
         return editListResponseInput.next();
     }
 
-    public static String editItemFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner editItemResponseInput, String listToEditItemOf) {
+    public static String editItemFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner editItemResponseInput, String listToEditItemOf)
+    {
         Scanner itemToEditInput = new Scanner(System.in);
         System.out.println("For which of the following item(s) would you like to edit? Please input the exact name of the item.");
-        for (int i = 0; i < outerMap.get(listToEditItemOf).size(); i++) {
+        for (int i = 0; i < outerMap.get(listToEditItemOf).size(); i++)
+        {
             String currentItem = (String) outerMap.get(listToEditItemOf).keySet().toArray()[i];
             System.out.println(outerMap.get(listToEditItemOf).get(currentItem).getTitle());
         }
@@ -311,7 +342,8 @@ public class Application {
         System.out.println("Would you like to change the name of the item (y/n)?");
         String changeItemTitleResponse = changeItemTitleResponseInput.next();
 
-        if (changeItemTitleResponse.equals("y")) {
+        if (changeItemTitleResponse.equals("y"))
+        {
             Scanner newItemTitleInput = new Scanner(System.in);
             System.out.println("What do you want the new name of the item to be?");
             String newItemTitle = newItemTitleInput.next();
@@ -322,14 +354,16 @@ public class Application {
         System.out.println("Would you like to change the description of the item (y/n)?");
         String changeItemDescResponse = changeItemDescResponseInput.next();
 
-        if (changeItemDescResponse.equals("y")) {
+        if (changeItemDescResponse.equals("y"))
+        {
             Scanner newItemDescInput = new Scanner(System.in);
             System.out.println("What do you want the new description of the item to be?");
             String newItemDesc = newItemDescInput.nextLine();
 
             int descLength = newItemDesc.length();
 
-            while (descLength > 256) {
+            while (descLength > 256)
+            {
                 System.out.println("Your description goes over the 256 character limit. Please input a shorter description.");
                 newItemDesc = newItemDescInput.nextLine();
                 descLength = newItemDesc.length();
@@ -342,7 +376,8 @@ public class Application {
         System.out.println("Would you like to change the deadline of the item (y/n)?");
         String changeItemDeadlineResponse = changeItemDeadlineResponseInput.next();
 
-        if (changeItemDeadlineResponse.equals("y")) {
+        if (changeItemDeadlineResponse.equals("y"))
+        {
             Scanner newItemDeadlineInput = new Scanner(System.in);
             System.out.println("What do you want the new deadline of the item to be? Please input it as the following format: YYYY-MM-DD.");
             String newItemDeadline = newItemDeadlineInput.next();
@@ -353,10 +388,14 @@ public class Application {
         System.out.println("Would you like to change the deadline of the item (y/n)?");
         String changeItemCompletionStatusResponse = changeItemCompletionStatusResponseInput.next();
 
-        if (changeItemCompletionStatusResponse.equals("y")) {
-            if (outerMap.get(listToEditItemOf).get(itemToEdit).getTitle().equals("0")) {
+        if (changeItemCompletionStatusResponse.equals("y"))
+        {
+            if (outerMap.get(listToEditItemOf).get(itemToEdit).getTitle().equals("0"))
+            {
                 outerMap.get(listToEditItemOf).get(itemToEdit).setTitle("1");
-            } else {
+            }
+            else
+            {
                 outerMap.get(listToEditItemOf).get(itemToEdit).setCompletionFlag("0");
             }
         }
@@ -366,10 +405,12 @@ public class Application {
         return editItemResponseInput.next();
     }
 
-    public static String removeListFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner typeOfListRemovalResponseInput) {
+    public static String removeListFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner typeOfListRemovalResponseInput)
+    {
         Scanner listToRemoveInput = new Scanner(System.in);
         System.out.println("For which of the following lists would you like to remove? Please input the exact name of the list.");
-        for (int i = 0; i < outerMap.size(); i++) {
+        for (int i = 0; i < outerMap.size(); i++)
+        {
             System.out.println(outerMap.keySet().toArray()[i]);
         }
 
@@ -381,8 +422,10 @@ public class Application {
         return typeOfListRemovalResponseInput.next();
     }
 
-    public static String removeAllListsFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap) {
-        for (int i = 0; i < outerMap.size(); i++) {
+    public static String removeAllListsFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap)
+    {
+        for (int i = 0; i < outerMap.size(); i++)
+        {
             String currentList = (String) outerMap.keySet().toArray()[i];
             outerMap.remove(currentList);
         }
@@ -390,10 +433,12 @@ public class Application {
         return "n";
     }
 
-    public static String removeItemFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner typeOfItemRemovalResponseInput, String listToRemoveItemFrom) {
+    public static String removeItemFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner typeOfItemRemovalResponseInput, String listToRemoveItemFrom)
+    {
         Scanner itemToEditInput = new Scanner(System.in);
         System.out.println("For which of the following item(s) would you like to remove? Please input the exact name of the item.");
-        for (int i = 0; i < outerMap.get(listToRemoveItemFrom).size(); i++) {
+        for (int i = 0; i < outerMap.get(listToRemoveItemFrom).size(); i++)
+        {
             String currentItem = (String) outerMap.get(listToRemoveItemFrom).keySet().toArray()[i];
 
             System.out.println(outerMap.get(listToRemoveItemFrom).get(currentItem).getTitle());
@@ -407,8 +452,10 @@ public class Application {
         return typeOfItemRemovalResponseInput.next();
     }
 
-    public static String removeAllItemsFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, String listToRemoveItemsFrom) {
-        for (int i = 0; i < outerMap.get(listToRemoveItemsFrom).size(); i++) {
+    public static String removeAllItemsFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, String listToRemoveItemsFrom)
+    {
+        for (int i = 0; i < outerMap.get(listToRemoveItemsFrom).size(); i++)
+        {
             String currentItem = (String) outerMap.get(listToRemoveItemsFrom).keySet().toArray()[i];
             outerMap.get(listToRemoveItemsFrom).remove(currentItem);
         }
@@ -416,12 +463,15 @@ public class Application {
         return "n";
     }
 
-    public static void printAllListsAndItems(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap) {
-        for (int i = 0; i < outerMap.size(); i++) {
+    public static void printAllListsAndItems(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap)
+    {
+        for (int i = 0; i < outerMap.size(); i++)
+        {
             String currentList = (String) outerMap.keySet().toArray()[i];
             System.out.println(currentList + " has a inner hashmap with a size of " + outerMap.get(currentList).keySet().size());
 
-            for (int j = 0; j < outerMap.get(currentList).keySet().size(); j++) {
+            for (int j = 0; j < outerMap.get(currentList).keySet().size(); j++)
+            {
                 String currentItem = (String) outerMap.get(currentList).keySet().toArray()[j];
 
                 String currentItemTitle = outerMap.get(currentList).get(currentItem).getTitle();
@@ -439,50 +489,65 @@ public class Application {
         }
     }
 
-    public static void printAllLists(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap) {
-        for (int i = 0; i < outerMap.size(); i++) {
+    public static void printAllLists(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap)
+    {
+        for (int i = 0; i < outerMap.size(); i++)
+        {
             String currentList = (String) outerMap.keySet().toArray()[i];
             System.out.println(currentList);
         }
     }
 
-    public static void printAllItemsOfList(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, String listToPrintItemsFrom) {
-        for (int i = 0; i < outerMap.get(listToPrintItemsFrom).size(); i++) {
+    public static void printAllItemsOfList(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, String listToPrintItemsFrom)
+    {
+        for (int i = 0; i < outerMap.get(listToPrintItemsFrom).size(); i++)
+        {
             String currentItem = (String) outerMap.get(listToPrintItemsFrom).keySet().toArray()[i];
             System.out.println(currentItem);
         }
     }
 
     public static void printAllCompletedItemsOfList(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, String listToPrintItemsFrom) {
-        for (int i = 0; i < outerMap.get(listToPrintItemsFrom).size(); i++) {
+        for (int i = 0; i < outerMap.get(listToPrintItemsFrom).size(); i++)
+        {
             String currentItem = (String) outerMap.get(listToPrintItemsFrom).keySet().toArray()[i];
 
-            if (outerMap.get(listToPrintItemsFrom).get(currentItem).getCompletionFlag().equals("1")) {
+            if (outerMap.get(listToPrintItemsFrom).get(currentItem).getCompletionFlag().equals("1"))
+            {
                 System.out.println(currentItem);
             }
         }
     }
 
-    public static void printAllUncompletedItemsOfList(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, String listToPrintItemsFrom) {
-        for (int i = 0; i < outerMap.get(listToPrintItemsFrom).size(); i++) {
+    public static void printAllUncompletedItemsOfList(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, String listToPrintItemsFrom)
+    {
+        for (int i = 0; i < outerMap.get(listToPrintItemsFrom).size(); i++)
+        {
             String currentItem = (String) outerMap.get(listToPrintItemsFrom).keySet().toArray()[i];
 
-            if (outerMap.get(listToPrintItemsFrom).get(currentItem).getCompletionFlag().equals("0")) {
+            if (outerMap.get(listToPrintItemsFrom).get(currentItem).getCompletionFlag().equals("0"))
+            {
                 System.out.println(currentItem);
             }
         }
     }
 
-    public static String saveListFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner listToSaveInput, String listToSave) throws IOException {
+    public static String saveListFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner listToSaveInput, String listToSave) throws IOException
+    {
         File saveListFile = new File("src/main/java/ucf/assignments/saveListFile.txt");
         boolean saveListFileCreated = saveListFile.createNewFile();
         FileWriter saveListFileOutput = new FileWriter(saveListFile);
 
-        if (outerMap.size() != 0) {
-            if (saveListFileCreated) {
-                if (saveListFile.exists()) {
+        if (outerMap.size() != 0)
+        {
+            if (saveListFileCreated)
+            {
+                if (saveListFile.exists())
+                {
                     saveListFileOutput.write("List: " + listToSave);
-                    for (int i = 0; i < outerMap.get(listToSave).size(); i++) {
+
+                    for (int i = 0; i < outerMap.get(listToSave).size(); i++)
+                    {
                         String currentItem = (String) outerMap.get(listToSave).keySet().toArray()[i];
 
                         String currentItemTitle = outerMap.get(listToSave).get(currentItem).getTitle();
@@ -505,21 +570,27 @@ public class Application {
             saveListFileOutput.close();
 
             System.out.println("Would you like to save another list (y/n)?");
-        } else {
+        }
+        else
+        {
             System.out.println("There are no lists available to save.");
         }
 
         return listToSaveInput.next();
     }
 
-    public static String loadListFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner listToLoadInput, String listToLoad) throws IOException {
+    public static String loadListFunction(HashMap<String, HashMap<String, ApplicationController.ItemDetails>> outerMap, Scanner listToLoadInput, String listToLoad) throws IOException
+    {
         File loadListFile = new File("src/main/java/ucf/assignments/saveListFile.txt");
         BufferedReader loadListFileReader = new BufferedReader(new FileReader(loadListFile));
 
-        if (loadListFileReader.readLine() != null) {
-            for (int i = 0; i < loadListFile.length(); i++) {
+        if (loadListFileReader.readLine() != null)
+        {
+            for (int i = 0; i < loadListFile.length(); i++)
+            {
                 String currentLine = loadListFileReader.readLine();
-                if (currentLine.contains(listToLoad)) {
+                if (currentLine.contains(listToLoad))
+                {
                     HashMap<String, ApplicationController.ItemDetails> innerMap = new HashMap<>();
                     outerMap.put(listToLoad, innerMap);
 
@@ -540,7 +611,9 @@ public class Application {
             }
 
             System.out.println("Would you like to load another list (y/n)?");
-        } else {
+        }
+        else
+        {
             System.out.println("There are no lists available to save.");
         }
 
