@@ -35,7 +35,6 @@ public class ApplicationController extends javafx.application.Application
             this.itemTitle = newItemTitle;
         }
 
-
         public String getDueDate()
         {
             return dueDate;
@@ -71,6 +70,7 @@ public class ApplicationController extends javafx.application.Application
             this.completionFlag = changedCompletionFlag;
         }
     }
+
     @Override
     public void start(Stage stage) throws IOException
     {
