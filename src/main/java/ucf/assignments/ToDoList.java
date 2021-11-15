@@ -8,7 +8,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import java.util.ArrayList;
 import java.io.*;
 
-public class ListConstructor
+public class ToDoList
 {
     ArrayList<ToDos> tasks;
 
@@ -132,7 +132,6 @@ public class ListConstructor
 
                 newtasks.add(task);
             }
-
             tasks = newtasks;
         }
 
