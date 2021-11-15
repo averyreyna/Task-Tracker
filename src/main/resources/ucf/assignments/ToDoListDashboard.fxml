@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lavender;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.Application">
+    <children>
+        <Button fx:id="addItemButton" layoutX="495.0" layoutY="33.0" mnemonicParsing="false" onAction="#addAction" style="-fx-background-color: plum;" text="Add Item" />
+        <Text layoutX="60.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Description" />
+        <Text layoutX="300.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Due Date" />
+        <TextField fx:id="descField" layoutX="52.0" layoutY="33.0" prefHeight="26.0" prefWidth="206.0" />
+        <TableView fx:id="listTable" cache="true" layoutX="38.0" layoutY="82.0" prefHeight="200.0" prefWidth="394.0" style="-fx-background-color: lavender; -fx-border-radius: 10px; -fx-border-width: 5px; -fx-border-color: white;">
+            <columns>
+                <TableColumn fx:id="desc" prefWidth="158.4000244140625" text="Description" />
+                <TableColumn fx:id="dueDate" prefWidth="108.00006103515625" text="Due Date" />
+                <TableColumn fx:id="isComplete" prefWidth="99.20001220703125" text="Completed?" />
+            </columns>
+        </TableView>
+        <Button fx:id="saveButton" layoutX="259.0" layoutY="301.0" mnemonicParsing="false" onAction="#saveAction" style="-fx-background-color: plum;" text="Save List" />
+        <Button fx:id="loadButton" layoutX="349.0" layoutY="301.0" mnemonicParsing="false" onAction="#loadAction" style="-fx-background-color: plum;" text="Load List" />
+        <Button fx:id="clearButton" layoutX="381.0" layoutY="345.0" mnemonicParsing="false" onAction="#clearAction" style="-fx-background-color: plum;" text="Clear List" />
+        <Button fx:id="delItemButton" layoutX="449.0" layoutY="96.0" mnemonicParsing="false" onAction="#removeAction" style="-fx-background-color: plum;" text="Delete Item" />
+        <Button fx:id="editDateButton" layoutX="449.0" layoutY="146.0" mnemonicParsing="false" onAction="#editTaskDate" style="-fx-background-color: plum;" text="Edit Item Date" />
+        <Button fx:id="editDescButton" layoutX="449.0" layoutY="200.0" mnemonicParsing="false" onAction="#editTaskDesc" style="-fx-background-color: plum;" text="Edit Item Description" />
+        <Button fx:id="allButton" layoutX="50.0" layoutY="345.0" mnemonicParsing="false" onAction="#displayAll" style="-fx-background-color: plum;" text="Display All" />
+        <Button fx:id="completeButton" layoutX="135.0" layoutY="345.0" mnemonicParsing="false" onAction="#displayComplete" style="-fx-background-color: plum;" text="Display Complete" />
+        <Button fx:id="incompleteButton" layoutX="252.0" layoutY="345.0" mnemonicParsing="false" onAction="#displayIncomplete" style="-fx-background-color: plum;" text="Display Incomplete" />
+        <Button fx:id="editPosButton" layoutX="449.0" layoutY="256.0" mnemonicParsing="false" onAction="#editTaskPos" style="-fx-background-color: plum;" text="Edit Item Completion" />
+        <Text layoutX="458.0" layoutY="327.0" stroke="WHITE" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="For help, check the README.md on the GitHub repository!" textAlignment="CENTER" wrappingWidth="127.20000000000005" />
+        <TextField fx:id="fileField" layoutX="55.0" layoutY="301.0" prefHeight="26.0" prefWidth="169.0" />
+        <Text layoutX="59.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File Name" />
+        <Text layoutX="226.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text=".csv" />
+        <DatePicker fx:id="dateField" layoutX="293.0" layoutY="33.0" />
+    </children>
+</AnchorPane>

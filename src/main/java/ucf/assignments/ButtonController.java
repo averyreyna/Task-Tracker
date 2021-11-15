@@ -80,7 +80,7 @@ public class ButtonController
 
     public void onViewCompletedItemsClick(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CompletedItems.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("WelcomeScreen.fxml")));
         Scene scene = new Scene(root);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
