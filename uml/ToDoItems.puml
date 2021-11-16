@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
++class ToDo
+{
+    + getIncomplete(): ArrayList<ToDo>
+    + getComplete(): ArrayList<ToDo>
+    + getTasks() : ArrayList<ToDo>
+    + loadList(File fileDirectory) : List
+    - tasks : Arraylist<ToDo>
+
+    + addTask(ToDo task)
+    + deleteTask(ToDo task)
+    + clear()
+    + saveList(File fileDirectory)
+
+}
+
+@enduml
