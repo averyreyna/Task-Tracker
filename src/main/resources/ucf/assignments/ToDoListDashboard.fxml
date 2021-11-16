@@ -8,8 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListDashboard">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.Application">
    <children>
       <Label layoutX="15.0" layoutY="14.0" text="Description:" />
       <TextField layoutX="13.0" layoutY="31.0" />
@@ -23,17 +22,20 @@
             <TableColumn prefWidth="60.0" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="223.0" layoutY="260.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="92.0" text="Edit Due Date" />
-      <Button layoutX="346.0" layoutY="260.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="104.0" text="Edit Description" />
-      <Button layoutX="469.0" layoutY="260.0" mnemonicParsing="false" text="Edit Completion" />
+      <Button layoutX="199.0" layoutY="260.0" mnemonicParsing="false" onAction="#editTaskDate" prefHeight="26.0" prefWidth="92.0" text="Edit Due Date" />
+      <Button layoutX="291.0" layoutY="260.0" mnemonicParsing="false" onAction="#editTaskDesc" prefHeight="26.0" prefWidth="104.0" text="Edit Description" />
+      <Button layoutX="392.0" layoutY="260.0" mnemonicParsing="false" onAction="#displayComplete" text="Edit Completion" />
       <Label layoutX="13.0" layoutY="153.0" />
       <Label layoutX="13.0" layoutY="153.0" text="Load FIle (Insert File Name):" />
-      <TextField layoutX="12.0" layoutY="170.0" />
-      <Label layoutX="13.0" layoutY="200.0" text="Save File (Insert FIle Name):" />
-      <TextField layoutX="12.0" layoutY="224.0" />
-      <Button layoutX="245.0" layoutY="296.0" mnemonicParsing="false" text="View Completed Items" />
-      <Button layoutX="393.0" layoutY="296.0" mnemonicParsing="false" text="View Uncompleted Items" />
-      <Button layoutX="398.0" layoutY="335.0" mnemonicParsing="false" text="Clear" />
-      <Button layoutX="324.0" layoutY="335.0" mnemonicParsing="false" text="View All" />
+      <TextField layoutX="12.0" layoutY="170.0" onAction="#loadAction" />
+      <Label layoutX="13.0" layoutY="246.0" text="Save File (Insert FIle Name):" />
+      <TextField layoutX="12.0" layoutY="260.0" onAction="#saveAction" />
+      <Button layoutX="254.0" layoutY="296.0" mnemonicParsing="false" onAction="#displayComplete" text="View Completed Items" />
+      <Button layoutX="393.0" layoutY="296.0" mnemonicParsing="false" onAction="#displayIncomplete" text="View Uncompleted Items" />
+      <Button layoutX="395.0" layoutY="335.0" mnemonicParsing="false" text="Clear" />
+      <Button layoutX="338.0" layoutY="335.0" mnemonicParsing="false" text="View All" />
+      <Button layoutX="14.0" layoutY="196.0" mnemonicParsing="false" text="Submit" />
+      <Button layoutX="14.0" layoutY="284.0" mnemonicParsing="false" text="Submit" />
+      <Button layoutX="496.0" layoutY="260.0" mnemonicParsing="false" text="Remove Item" />
    </children>
 </AnchorPane>

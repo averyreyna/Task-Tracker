@@ -13,17 +13,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class ToDos
+public class ToDo
 {
     SimpleStringProperty itemDescription;
     SimpleStringProperty itemDueDate;
     SimpleBooleanProperty itemIsComplete;
 
-    public ToDos(String desc, String dueDate)
+    public ToDo (String desc, String dueDate)
     {
         this.itemDescription = new SimpleStringProperty(desc);
         this.itemDueDate = new SimpleStringProperty(dueDate);
-        this.itemIsComplete = new SimpleBooleanProperty(false); // false until the editPos button is clicked
+        this.itemIsComplete = new SimpleBooleanProperty(false);
     }
 
     public String getDesc()
@@ -51,7 +51,7 @@ public class ToDos
         this.itemDueDate = new SimpleStringProperty(date);
     }
 
-    public void editisComplete()
+    public void editIsComplete()
     {
         if (itemIsComplete.get())
         {

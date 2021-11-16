@@ -7,11 +7,12 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ButtonController">
    <children>
-      <Label layoutX="143.0" layoutY="177.0" text="Welcome! What do you want to do today?">
+      <Label layoutX="143.0" layoutY="130.0" text="Welcome! What do you want to do today?">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="206.0" layoutY="219.0" mnemonicParsing="false" text="View my To-Do List Dashboard" />
+      <Button layoutX="207.0" layoutY="174.0" mnemonicParsing="false" text="View my To-Do List Dashboard" />
+      <Label layoutX="98.0" layoutY="221.0" text="If you need more help, please refer to the README.md file in the repository!" />
    </children>
 </AnchorPane>

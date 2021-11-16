@@ -16,13 +16,11 @@ import javafx.util.Callback;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable
+public class Application implements Initializable
 {
-    List list = new List();
-
+    ToDoList list = new ToDoList();
     static ObservableList<ToDos> display = FXCollections.observableArrayList();
 
     @FXML
@@ -82,7 +80,7 @@ public class HelloController implements Initializable
     @FXML
     void addAction(ActionEvent event)
     {
-        ToDos task = new ToDos(descField.getText(), dateField.getValue().toString());
+        ToDo task = new ToDo(descField.getText(), dateField.getValue().toString());
         list.addTask(task);
 
         listTable.getItems().add(task);
@@ -127,7 +125,7 @@ public class HelloController implements Initializable
     @FXML
     void editTaskDate(ActionEvent event)
     {
-        ToDos current = listTable.getSelectionModel().getSelectedItem();
+        ToDo current = listTable.getSelectionModel().getSelectedItem();
         String str = dateField.getValue().toString();
         current.editdueDate(str);
         listTable.refresh();
@@ -136,7 +134,7 @@ public class HelloController implements Initializable
     @FXML
     void editTaskDesc(ActionEvent event)
     {
-        ToDos current = listTable.getSelectionModel().getSelectedItem();
+        ToDo current = listTable.getSelectionModel().getSelectedItem();
         String str = descField.getText();
         current.editDesc(str);
         listTable.refresh();
@@ -145,7 +143,7 @@ public class HelloController implements Initializable
     @FXML
     void editTaskPos(ActionEvent event)
     {
-        ToDos current = listTable.getSelectionModel().getSelectedItem();
+        ToDo current = listTable.getSelectionModel().getSelectedItem();
         current.editisComplete();
         listTable.refresh();
     }
@@ -191,7 +189,6 @@ public class HelloController implements Initializable
         {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<ToDos, String> p)
             {
-                // p.getValue() returns the ToDos instance for a particular TableView row
                 return p.getValue().dueDate;
             }
         });

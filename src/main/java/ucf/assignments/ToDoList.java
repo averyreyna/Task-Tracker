@@ -5,24 +5,26 @@
 
 package ucf.assignments;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.List;
 import java.io.*;
 
 public class ToDoList
 {
-    ArrayList<ToDos> tasks;
+    ArrayList<ToDo> tasks;
 
-    public List()
+    public ToDoList()
     {
         tasks = new ArrayList<>();
     }
 
-    public void addTask(ToDos task)
+    public void addTask(ToDo task)
     {
         tasks.add(task);
     }
 
-    public void deleteTask(ToDos task)
+    public void deleteTask(ToDo task)
     {
         tasks.remove(task);
     }
@@ -32,11 +34,11 @@ public class ToDoList
         tasks.clear();
     }
 
-    public ArrayList<ToDos> getIncomplete()
+    public ArrayList<ToDo> getIncomplete()
     {
-        ArrayList<ToDos> incompletes = new ArrayList<>();
+        ArrayList<ToDo> incompletes = new ArrayList<>();
 
-        for(ToDos i: tasks)
+        for(ToDo i: tasks)
         {
             if (!(i.itemIsComplete.get()))
             {
@@ -46,11 +48,11 @@ public class ToDoList
         return incompletes;
     }
 
-    public ArrayList<ToDos> getComplete()
+    public ArrayList<ToDo> getComplete()
     {
-        ArrayList<ToDos> completes = new ArrayList<>();
+        ArrayList<ToDo> completes = new ArrayList<>();
 
-        for(ToDos i: tasks)
+        for(ToDo i: tasks)
         {
             if (i.itemIsComplete.get())
                 completes.add(i);
@@ -59,13 +61,13 @@ public class ToDoList
         return completes;
     }
 
-    public ArrayList<ToDos> getTasks()
+    public ArrayList<ToDo> getTasks()
     {
         return tasks;
     }
 
-    public void saveList(File fileDirectory){
-
+    public void saveList(File fileDirectory)
+    {
         try
         {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileDirectory));
@@ -76,15 +78,16 @@ public class ToDoList
             writer.write("Completion Status");
             writer.write("\n");
 
-            for (ToDos task: tasks) {
-
+            for (ToDo task: tasks)
+            {
                 writer.write(task.getDesc());
                 writer.write(",");
 
                 writer.write(task.getdueDate());
                 writer.write(",");
 
-                if(task.itemIsComplete.get()){
+                if(task.itemIsComplete.get())
+                {
                     writer.write("complete\n");
                 }
                 else
@@ -103,10 +106,10 @@ public class ToDoList
 
     }
 
-    public List loadList(File fileDirectory)
+    public ToDoList loadList(File fileDirectory)
     {
-        List newlist = new List();
-        ArrayList<ToDos> newtasks = new ArrayList<>();
+        ToDoList newlist = new ToDoList();
+        ArrayList<ToDo> newtasks = new ArrayList<>();
         newlist.tasks = newtasks;
 
         try
@@ -119,9 +122,9 @@ public class ToDoList
             {
                 String[] str = line.split(",");
 
-                ToDos task = new ToDos(str[0], str[1]);
+                ToDo task = new ToDo(str[0], str[1]);
 
-                if(str[2].equals("complete"))
+                if (str[2].equals("complete"))
                 {
                     task.itemIsComplete = new SimpleBooleanProperty(true);
                 }
@@ -132,6 +135,7 @@ public class ToDoList
 
                 newtasks.add(task);
             }
+
             tasks = newtasks;
         }
 
