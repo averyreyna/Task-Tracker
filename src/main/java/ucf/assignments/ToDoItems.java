@@ -9,10 +9,12 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class ToDoItems
 {
+    // initialize itemDescription, itemDueDate, itemIsComplete with type SimpleStringProperty
     SimpleStringProperty itemDescription;
     SimpleStringProperty itemDueDate;
     SimpleBooleanProperty itemIsComplete;
 
+    // constructor setting the to-do list variables
     public ToDoItems(String desc, String dueDate)
     {
         this.itemDescription = new SimpleStringProperty(desc);
@@ -20,6 +22,7 @@ public class ToDoItems
         this.itemIsComplete = new SimpleBooleanProperty(false);
     }
 
+    // getter functions for displaying the objects' description, due date, and completion status
     public String getDesc()
     {
         return itemDescription.get();
@@ -35,6 +38,7 @@ public class ToDoItems
         return itemIsComplete.get();
     }
 
+    // these are setter functions the objects' description, due date, and completion status
     public void editDesc(String str)
     {
         this.itemDescription = new SimpleStringProperty(str);
