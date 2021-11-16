@@ -5,9 +5,7 @@
 
 package ucf.assignments;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.event.ActionEvent;
 import java.util.ArrayList;
-import java.util.List;
 import java.io.*;
 
 public class ToDoList

@@ -9,57 +9,108 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import java.io.File;
+import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ApplicationTest
 {
     @Test
-    public void main() throws IOException
+    void addRemoveTest()
     {
-        HashMap<String, ApplicationController.ItemDetails> testOuterMap = new HashMap<>();
+        ToDoList list = new ToDoList();
 
-        String itemTitleTest = "Test Item Title";
-        String itemDescriptionTest = "Test Item Description";
-        String dueDateTest = "2021-11-16";
-        String completionStatusTest = "0";
-        String itemTitleTestTwo = "Test Item Title #2";
-        String itemDescriptionTestTwo = "Test Item Description";
-        String dueDateTestTwo = "2021-11-16";
-        String testItemCompletionFlag2 = "0";
+        ArrayList<ToDo> tasks = new ArrayList<>();
 
-        makeItemFunction(testOuterMap, itemTitleTest, itemDescriptionTest, dueDateTest, completionStatusTest);
-        assertEquals(itemTitleTest, testOuterMap.keySet().toArray()[0]);
-        editItemFunction(testOuterMap, itemTitleTest, itemTitleTestTwo, itemDescriptionTestTwo, dueDateTestTwo, testItemCompletionFlag2);
-        assertEquals(itemTitleTestTwo, testOuterMap.keySet().toArray()[0]);
+        ToDo task1 = new ToDo("task1", "2021-11-03");
+        ToDo task2 = new ToDo("task2", "2021-11-25");
 
-        assertEquals(itemDescriptionTestTwo, testOuterMap.get(itemTitleTestTwo).getItemDescription());
-        assertEquals(dueDateTestTwo, testOuterMap.get(itemTitleTestTwo).getDueDate());
-        assertEquals(testItemCompletionFlag2, testOuterMap.get(itemTitleTestTwo).getCompletionFlag());
-        Application.removeItem(testOuterMap, itemTitleTestTwo);
-        assertEquals(0, testOuterMap.size());
+        list.addTask(task1);
+        list.addTask(task2);
 
-        Application.makeItemFunction(testOuterMap, itemTitleTest, itemDescriptionTest, dueDateTest, completionStatusTest);
-        Application.makeItemFunction(testOuterMap, itemTitleTestTwo, itemDescriptionTestTwo, dueDateTestTwo, testItemCompletionFlag2);
+        tasks.add(task1);
+        tasks.add(task2);
 
-        assertTrue(Application.printAllItemsOfList(testOuterMap).contains(itemTitleTest));
-        assertTrue(Application.printAllItemsOfList(testOuterMap).contains(itemTitleTestTwo));
-        assertTrue(Application.printAllCompletedItemsOfList(testOuterMap).contains(itemTitleTestTwo));
-        assertTrue(Application.printAllUncompletedItemsOfList(testOuterMap).contains(itemTitleTest));
-        Application.removeAllItemsFunction(testOuterMap);
+        list.deleteTask(task2);
+        tasks.remove(task2);
 
-        assertEquals(0, testOuterMap.size());
-
-        Application.makeItemFunction(testOuterMap,itemTitleTest, itemDescriptionTest, dueDateTest, completionStatusTest);
-        Application.makeItemFunction(testOuterMap, itemTitleTestTwo, itemDescriptionTestTwo, dueDateTestTwo, testItemCompletionFlag2);
-
-        File saveListFile = new File("src/main/java/ucf/assignments/saveListFile.txt");
-
-        Application.saveListFunction(testOuterMap);
-
-        assertTrue(saveListFile.exists());
-        assertTrue(saveListFile.length() != 0);
-
-        Application.loadListFunction(testOuterMap);
-
-        assertTrue(testOuterMap.size() != 0);
+        assertEquals(list.tasks, tasks);
     }
+
+    @Test
+    void saveLoadTest()
+    {
+        ToDoList list = new ToDoList();
+
+        ToDo task1 = new ToDo("task1", "2021-11-03");
+        ToDo task2 = new ToDo("task2", "2021-11-25");
+
+        savedList.addTask(task1);
+        savedList.addTask(task2);
+
+        new File("./listTests").mkdirs();
+
+        String name = "test";
+        File file = new File("./listTests/"+name+".csv");
+
+        savedList.saveList(file);
+
+        ToDoList loadedList;
+        loadedList = savedList.loadList(file);
+
+        assertFalse(loadedList.tasks.isEmpty());
+    }
+
+    @Test
+    void clearListTest()
+    {
+        ToDoList list = new ToDoList();
+
+        ToDo task1 = new ToDo("task1", "2021-11-03");
+        ToDo task2 = new ToDo("task2", "2021-11-25");
+
+        list.addTask(task1);
+        list.addTask(task2);
+
+        list.clear();
+
+        assertTrue(list.tasks.isEmpty());
+
+    }
+
+    @Test
+    void editTaskTest()
+    {
+        ToDoList list = new ToDoList();
+
+        ToDo task1 = new ToDo("task", "2021-11-25");
+        ToDo task2 = new ToDo("task", "2021-11-25");
+
+        list.addTask(task1);
+        list.addTask(task2);
+
+        task2.editDesc("description should be different");
+        task2.editdueDate("2021-11-26");
+        task2.editisComplete();
+
+        assertTrue(task1.getdueDate() != task2.getdueDate() && task1.getDesc() != task2.getDesc() && task1.getisComplete() != task2.getisComplete());
+
+    }
+
+    @Test
+    void getTasksTest()
+    {
+        ToDoList list = new ToDoList();
+        ToDo task1 = new ToDo("task1", "2021-11-03");
+        ToDo task2 = new ToDo("task2", "2021-11-25");
+
+        list.addTask(task1);
+        list.addTask(task2);
+        task2.editisComplete();
+
+        assertTrue(list.getTasks() != list.getComplete() && list.getTasks() != list.getIncomplete() && list.getComplete()!= list.getIncomplete());
+    }
+
+
 }

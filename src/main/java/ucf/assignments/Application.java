@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 public class Application implements Initializable
 {
     ToDoList list = new ToDoList();
-    static ObservableList<ToDos> display = FXCollections.observableArrayList();
+    static ObservableList<ToDo> display = FXCollections.observableArrayList();
 
     @FXML
     private Button addItemButton;
@@ -42,16 +42,16 @@ public class Application implements Initializable
     private Button delItemButton;
 
     @FXML
-    private TableView<ToDos> listTable;
+    private TableView<ToDo> listTable;
 
     @FXML
-    private TableColumn<ToDos, String> desc;
+    private TableColumn<ToDo, String> desc;
 
     @FXML
-    private TableColumn<ToDos, String> dueDate;
+    private TableColumn<ToDo, String> dueDate;
 
     @FXML
-    private TableColumn<ToDos, Boolean> isComplete;
+    private TableColumn<ToDo, Boolean> isComplete;
 
     @FXML
     private TextField descField;
@@ -163,7 +163,7 @@ public class Application implements Initializable
     @FXML
     void removeAction(ActionEvent event)
     {
-        ToDos task = listTable.getSelectionModel().getSelectedItem();
+        ToDo task = listTable.getSelectionModel().getSelectedItem();
 
         list.deleteTask(task);
         listTable.getItems().remove(task);
@@ -185,17 +185,17 @@ public class Application implements Initializable
     {
         desc.setCellValueFactory(new PropertyValueFactory<>("desc"));
 
-        dueDate.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ToDos, String>, ObservableValue<String>>()
+        dueDate.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ToDo, String>, ObservableValue<String>>()
         {
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<ToDos, String> p)
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<ToDo, String> p)
             {
                 return p.getValue().dueDate;
             }
         });
 
-        isComplete.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ToDos, Boolean>, ObservableValue<Boolean>>()
+        isComplete.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ToDo, Boolean>, ObservableValue<Boolean>>()
         {
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ToDos, Boolean> p)
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ToDo, Boolean> p)
             {
                 return p.getValue().isComplete;
             }
