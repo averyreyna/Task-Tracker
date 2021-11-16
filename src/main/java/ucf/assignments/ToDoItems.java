@@ -7,13 +7,13 @@ package ucf.assignments;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class ToDo
+public class ToDoItems
 {
     SimpleStringProperty itemDescription;
     SimpleStringProperty itemDueDate;
     SimpleBooleanProperty itemIsComplete;
 
-    public ToDo (String desc, String dueDate)
+    public ToDoItems(String desc, String dueDate)
     {
         this.itemDescription = new SimpleStringProperty(desc);
         this.itemDueDate = new SimpleStringProperty(dueDate);

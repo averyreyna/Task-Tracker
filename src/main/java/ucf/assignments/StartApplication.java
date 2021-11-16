@@ -10,14 +10,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-// create a "StartAndMain" function that starts and runs gradle the to-do list application is displayed to the user
-public class StartAndMain extends Application
+public class StartApplication extends Application
 {
     @Override
-    public void start(Stage stage) throws IOException
+    public void start (Stage stage) throws IOException
     {
         // use FXMLLoader to load the application
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("ToDoListDashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("To-Do List");
         stage.setScene(scene);

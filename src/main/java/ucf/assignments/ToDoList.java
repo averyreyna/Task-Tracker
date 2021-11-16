@@ -10,19 +10,19 @@ import java.io.*;
 
 public class ToDoList
 {
-    ArrayList<ToDo> tasks;
+    ArrayList<ToDoItems> tasks;
 
     public ToDoList()
     {
         tasks = new ArrayList<>();
     }
 
-    public void addTask(ToDo task)
+    public void addTask(ToDoItems task)
     {
         tasks.add(task);
     }
 
-    public void deleteTask(ToDo task)
+    public void deleteTask(ToDoItems task)
     {
         tasks.remove(task);
     }
@@ -32,11 +32,11 @@ public class ToDoList
         tasks.clear();
     }
 
-    public ArrayList<ToDo> getIncomplete()
+    public ArrayList<ToDoItems> getIncomplete()
     {
-        ArrayList<ToDo> incompletes = new ArrayList<>();
+        ArrayList<ToDoItems> incompletes = new ArrayList<>();
 
-        for(ToDo i: tasks)
+        for(ToDoItems i: tasks)
         {
             if (!(i.itemIsComplete.get()))
             {
@@ -46,11 +46,11 @@ public class ToDoList
         return incompletes;
     }
 
-    public ArrayList<ToDo> getComplete()
+    public ArrayList<ToDoItems> getComplete()
     {
-        ArrayList<ToDo> completes = new ArrayList<>();
+        ArrayList<ToDoItems> completes = new ArrayList<>();
 
-        for(ToDo i: tasks)
+        for(ToDoItems i: tasks)
         {
             if (i.itemIsComplete.get())
                 completes.add(i);
@@ -59,7 +59,7 @@ public class ToDoList
         return completes;
     }
 
-    public ArrayList<ToDo> getTasks()
+    public ArrayList<ToDoItems> getTasks()
     {
         return tasks;
     }
@@ -76,7 +76,7 @@ public class ToDoList
             writer.write("Completion Status");
             writer.write("\n");
 
-            for (ToDo task: tasks)
+            for (ToDoItems task: tasks)
             {
                 writer.write(task.getDesc());
                 writer.write(",");
@@ -107,7 +107,7 @@ public class ToDoList
     public ToDoList loadList(File fileDirectory)
     {
         ToDoList newlist = new ToDoList();
-        ArrayList<ToDo> newtasks = new ArrayList<>();
+        ArrayList<ToDoItems> newtasks = new ArrayList<>();
         newlist.tasks = newtasks;
 
         try
@@ -120,7 +120,7 @@ public class ToDoList
             {
                 String[] str = line.split(",");
 
-                ToDo task = new ToDo(str[0], str[1]);
+                ToDoItems task = new ToDoItems(str[0], str[1]);
 
                 if (str[2].equals("complete"))
                 {

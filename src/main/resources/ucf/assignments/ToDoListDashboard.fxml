@@ -8,34 +8,34 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.Application">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ButtonController">
    <children>
       <Label layoutX="15.0" layoutY="14.0" text="Description:" />
-      <TextField layoutX="13.0" layoutY="31.0" />
+      <TextField fx:id="descField" layoutX="13.0" layoutY="31.0" />
       <Label layoutX="14.0" layoutY="64.0" text="Due Date:" />
-      <DatePicker layoutX="13.0" layoutY="81.0" />
-      <Button layoutX="14.0" layoutY="115.0" mnemonicParsing="false" text="Add" />
-      <TableView layoutX="224.0" layoutY="15.0" prefHeight="239.0" prefWidth="349.0">
+      <DatePicker fx:id="dateField" layoutX="13.0" layoutY="81.0" />
+      <Button fx:id="addItemButton" onAction="#addAction" layoutX="14.0" layoutY="115.0" mnemonicParsing="false" text="Add" />
+      <TableView fx:id="listTable" layoutX="224.0" layoutY="15.0" prefHeight="239.0" prefWidth="349.0">
         <columns>
-          <TableColumn prefWidth="68.0" text="Due Date" />
-          <TableColumn prefWidth="220.0" text="Description" />
-            <TableColumn prefWidth="60.0" text="Status" />
+          <TableColumn fx:id="dueDate" prefWidth="68.0" text="Due Date" />
+          <TableColumn fx:id="desc" prefWidth="220.0" text="Description" />
+           <TableColumn fx:id="isComplete" prefWidth="60.0" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="199.0" layoutY="260.0" mnemonicParsing="false" onAction="#editTaskDate" prefHeight="26.0" prefWidth="92.0" text="Edit Due Date" />
-      <Button layoutX="291.0" layoutY="260.0" mnemonicParsing="false" onAction="#editTaskDesc" prefHeight="26.0" prefWidth="104.0" text="Edit Description" />
-      <Button layoutX="392.0" layoutY="260.0" mnemonicParsing="false" onAction="#displayComplete" text="Edit Completion" />
+      <Button fx:id="editDateButton" layoutX="199.0" layoutY="260.0" mnemonicParsing="false" onAction="#editTaskDate" prefHeight="26.0" prefWidth="92.0" text="Edit Due Date" />
+      <Button fx:id="editDescButton" layoutX="291.0" layoutY="260.0" mnemonicParsing="false" onAction="#editTaskDesc" prefHeight="26.0" prefWidth="104.0" text="Edit Description" />
+      <Button fx:id="editPosButton" layoutX="392.0" layoutY="260.0" mnemonicParsing="false" onAction="#editTaskPos" text="Edit Completion" />
       <Label layoutX="13.0" layoutY="153.0" />
       <Label layoutX="13.0" layoutY="153.0" text="Load FIle (Insert File Name):" />
-      <TextField layoutX="12.0" layoutY="170.0" onAction="#loadAction" />
-      <Label layoutX="13.0" layoutY="246.0" text="Save File (Insert FIle Name):" />
-      <TextField layoutX="12.0" layoutY="260.0" onAction="#saveAction" />
-      <Button layoutX="254.0" layoutY="296.0" mnemonicParsing="false" onAction="#displayComplete" text="View Completed Items" />
-      <Button layoutX="393.0" layoutY="296.0" mnemonicParsing="false" onAction="#displayIncomplete" text="View Uncompleted Items" />
-      <Button layoutX="395.0" layoutY="335.0" mnemonicParsing="false" text="Clear" />
-      <Button layoutX="338.0" layoutY="335.0" mnemonicParsing="false" text="View All" />
-      <Button layoutX="14.0" layoutY="196.0" mnemonicParsing="false" text="Submit" />
-      <Button layoutX="14.0" layoutY="284.0" mnemonicParsing="false" text="Submit" />
+      <TextField fx:id="loadFileField" layoutX="12.0" layoutY="170.0" />
+      <Label  layoutX="13.0" layoutY="246.0" text="Save File (Insert FIle Name):" />
+      <TextField fx:id="saveFileField" layoutX="12.0" layoutY="260.0" onAction="#saveAction" />
+      <Button fx:id="completeButton" layoutX="254.0" layoutY="296.0" mnemonicParsing="false" onAction="#displayComplete" text="View Completed Items" />
+      <Button fx:id="incompleteButton" layoutX="393.0" layoutY="296.0" mnemonicParsing="false" onAction="#displayIncomplete" text="View Uncompleted Items" />
+      <Button fx:id="clearButton" layoutX="395.0" layoutY="335.0" mnemonicParsing="false" text="Clear" />
+      <Button fx:id="allButton" layoutX="338.0" layoutY="335.0" mnemonicParsing="false" onAction="#displayAll" text="View All" />
+      <Button fx:id="loadButton" onAction="#loadAction" layoutX="14.0" layoutY="196.0" mnemonicParsing="false" text="Submit" />
+      <Button fx:id="saveButton" onAction="#saveAction" layoutX="14.0" layoutY="284.0" mnemonicParsing="false" text="Submit" />
       <Button layoutX="496.0" layoutY="260.0" mnemonicParsing="false" text="Remove Item" />
    </children>
 </AnchorPane>
